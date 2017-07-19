@@ -1,0 +1,26 @@
+var _user$project$Msgs$OnBookUpdate = function (a) {
+	return {ctor: 'OnBookUpdate', _0: a};
+};
+var _user$project$Msgs$UpdateSearchBooks = {ctor: 'UpdateSearchBooks'};
+var _user$project$Msgs$UpdateQuery = function (a) {
+	return {ctor: 'UpdateQuery', _0: a};
+};
+var _user$project$Msgs$OnLocationChange = function (a) {
+	return {ctor: 'OnLocationChange', _0: a};
+};
+var _user$project$Msgs$OnBooksFetched = function (a) {
+	return {ctor: 'OnBooksFetched', _0: a};
+};
+var _user$project$Msgs$NoOp = {ctor: 'NoOp'};
+var _user$project$Msgs$OnTagsUpdate = function (a) {
+	return {ctor: 'OnTagsUpdate', _0: a};
+};
+var _user$project$Msgs$OnSinopsisUpdate = function (a) {
+	return {ctor: 'OnSinopsisUpdate', _0: a};
+};
+var _user$project$Msgs$OnAuthorUpdate = function (a) {
+	return {ctor: 'OnAuthorUpdate', _0: a};
+};
+var _user$project$Msgs$OnTitleUpdate = function (a) {
+	return {ctor: 'OnTitleUpdate', _0: a};
+};

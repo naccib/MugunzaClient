@@ -1,0 +1,206 @@
+var _user$project$Book_Form$getSinopsisMsg = function (sinopsis) {
+	return _user$project$Msgs$OnBookUpdate(
+		_user$project$Msgs$OnSinopsisUpdate(sinopsis));
+};
+var _user$project$Book_Form$getAuthorMsg = function (author) {
+	return _user$project$Msgs$OnBookUpdate(
+		_user$project$Msgs$OnAuthorUpdate(author));
+};
+var _user$project$Book_Form$getTitleMsg = function (title) {
+	return _user$project$Msgs$OnBookUpdate(
+		_user$project$Msgs$OnTitleUpdate(title));
+};
+var _user$project$Book_Form$getTags = function (str) {
+	return A2(
+		_elm_lang$core$String$split,
+		',',
+		_elm_lang$core$String$trim(
+			_elm_lang$core$String$toLower(str)));
+};
+var _user$project$Book_Form$getTagsMsg = function (str) {
+	var tags = _user$project$Book_Form$getTags(str);
+	var msg = _user$project$Msgs$OnTagsUpdate(tags);
+	return _user$project$Msgs$OnBookUpdate(msg);
+};
+var _user$project$Book_Form$control = function (html) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('control'),
+			_1: {ctor: '[]'}
+		},
+		html);
+};
+var _user$project$Book_Form$formLabel = function (name) {
+	return A2(
+		_elm_lang$html$Html$label,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('label'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(name),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Book_Form$field = function (html) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('field'),
+			_1: {ctor: '[]'}
+		},
+		html);
+};
+var _user$project$Book_Form$view = A2(
+	_elm_lang$html$Html$form,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _user$project$Book_Form$field(
+			{
+				ctor: '::',
+				_0: _user$project$Book_Form$formLabel('Título do Livro'),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Book_Form$control(
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$input,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Book_Form$getTitleMsg),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('input'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$type_('text'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$placeholder('Ex.: Dom Casmurro'),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: _user$project$Book_Form$field(
+				{
+					ctor: '::',
+					_0: _user$project$Book_Form$formLabel('Autor do Livro'),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Book_Form$control(
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$input,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Book_Form$getAuthorMsg),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('input'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$type_('text'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$placeholder('Ex.: Machado de Assís'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Book_Form$field(
+					{
+						ctor: '::',
+						_0: _user$project$Book_Form$formLabel('Sinópse do Livro'),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Book_Form$control(
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$textarea,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onInput(_user$project$Book_Form$getSinopsisMsg),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('textarea'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$placeholder('Bento Santiago, já um homem de idade, conta ao leitor como recebeu a alcunha de Dom Casmurro. A expressão...'),
+													_1: {ctor: '[]'}
+												}
+											}
+										},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Book_Form$field(
+						{
+							ctor: '::',
+							_0: _user$project$Book_Form$formLabel('Tags do Livro'),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Book_Form$control(
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$input,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$Book_Form$getTagsMsg),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('input'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$type_('text'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$placeholder('Ex.: ação, supense, mistério'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});

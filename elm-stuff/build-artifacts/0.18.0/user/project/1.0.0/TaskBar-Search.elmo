@@ -1,0 +1,57 @@
+var _user$project$TaskBar_Search$Match = F2(
+	function (a, b) {
+		return {book: a, points: b};
+	});
+var _user$project$TaskBar_Search$compareWordAndBook = F2(
+	function (word, book) {
+		var sinopsisPoints = function (len) {
+			return len * 1;
+		}(
+			_elm_lang$core$List$length(
+				A2(_elm_lang$core$String$indexes, word, book.sinopsis)));
+		var authorPoints = function (len) {
+			return len * 2;
+		}(
+			_elm_lang$core$List$length(
+				A2(_elm_lang$core$String$indexes, word, book.author)));
+		var titlePoints = function (len) {
+			return len * 3;
+		}(
+			_elm_lang$core$List$length(
+				A2(_elm_lang$core$String$indexes, word, book.title)));
+		var totalPoints = (titlePoints + authorPoints) + sinopsisPoints;
+		return A2(_user$project$TaskBar_Search$Match, book, totalPoints);
+	});
+var _user$project$TaskBar_Search$computeMatches = F2(
+	function (word, books) {
+		return _elm_lang$core$List$reverse(
+			A2(
+				_elm_lang$core$List$map,
+				function (_) {
+					return _.book;
+				},
+				A2(
+					_elm_lang$core$List$filter,
+					function (match) {
+						return !_elm_lang$core$Native_Utils.eq(match.points, 0);
+					},
+					A2(
+						_elm_lang$core$List$sortBy,
+						function (_) {
+							return _.points;
+						},
+						A2(
+							_elm_lang$core$List$map,
+							_user$project$TaskBar_Search$compareWordAndBook(word),
+							books)))));
+	});
+var _user$project$TaskBar_Search$search = F2(
+	function (options, books) {
+		return _elm_lang$core$Native_Utils.eq(options.searchQuery, '') ? _elm_lang$core$Native_Utils.update(
+			options,
+			{filteredBooks: books}) : _elm_lang$core$Native_Utils.update(
+			options,
+			{
+				filteredBooks: A2(_user$project$TaskBar_Search$computeMatches, options.searchQuery, books)
+			});
+	});

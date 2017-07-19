@@ -1,0 +1,138 @@
+var _user$project$Update$changeBookTags = F2(
+	function (book, newTags) {
+		return _elm_lang$core$Native_Utils.update(
+			book,
+			{tags: newTags});
+	});
+var _user$project$Update$changeBookSinopsis = F2(
+	function (book, newSinopsis) {
+		return _elm_lang$core$Native_Utils.update(
+			book,
+			{sinopsis: newSinopsis});
+	});
+var _user$project$Update$changeBookAuthor = F2(
+	function (book, newAuthor) {
+		return _elm_lang$core$Native_Utils.update(
+			book,
+			{author: newAuthor});
+	});
+var _user$project$Update$changeBookTitle = F2(
+	function (book, newTitle) {
+		return _elm_lang$core$Native_Utils.update(
+			book,
+			{title: newTitle});
+	});
+var _user$project$Update$updateBook = F2(
+	function (model, msg) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'OnTitleUpdate':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							inputBook: A2(_user$project$Update$changeBookTitle, model.inputBook, _p0._0)
+						}),
+					{ctor: '[]'});
+			case 'OnAuthorUpdate':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							inputBook: A2(_user$project$Update$changeBookAuthor, model.inputBook, _p0._0)
+						}),
+					{ctor: '[]'});
+			case 'OnSinopsisUpdate':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							inputBook: A2(_user$project$Update$changeBookSinopsis, model.inputBook, _p0._0)
+						}),
+					{ctor: '[]'});
+			default:
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							inputBook: A2(_user$project$Update$changeBookTags, model.inputBook, _p0._0)
+						}),
+					{ctor: '[]'});
+		}
+	});
+var _user$project$Update$unwrapBookWebData = function (data) {
+	var _p1 = data;
+	if (_p1.ctor === 'Success') {
+		return _p1._0;
+	} else {
+		return {ctor: '[]'};
+	}
+};
+var _user$project$Update$updateTaskbarQuery = F2(
+	function (taskbar, newQuery) {
+		return _elm_lang$core$Native_Utils.update(
+			taskbar,
+			{searchQuery: newQuery});
+	});
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		update:
+		while (true) {
+			var _p2 = msg;
+			switch (_p2.ctor) {
+				case 'NoOp':
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				case 'OnBooksFetched':
+					var _p3 = _p2._0;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								books: _p3,
+								visibleBooks: _user$project$Update$unwrapBookWebData(_p3)
+							}),
+						{ctor: '[]'});
+				case 'UpdateQuery':
+					var _v3 = _user$project$Msgs$UpdateSearchBooks,
+						_v4 = _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							taskbar: A2(_user$project$Update$updateTaskbarQuery, model.taskbar, _p2._0)
+						});
+					msg = _v3;
+					model = _v4;
+					continue update;
+				case 'UpdateSearchBooks':
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								visibleBooks: function (_) {
+									return _.filteredBooks;
+								}(
+									A2(
+										_user$project$TaskBar_Search$search,
+										model.taskbar,
+										_user$project$Update$unwrapBookWebData(model.books)))
+							}),
+						{ctor: '[]'});
+				case 'OnLocationChange':
+					var newRoute = _user$project$Routing$parseLocation(_p2._0);
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{route: newRoute}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				default:
+					return A2(_user$project$Update$updateBook, model, _p2._0);
+			}
+		}
+	});

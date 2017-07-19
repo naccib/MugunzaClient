@@ -1,0 +1,44 @@
+var _user$project$View$notFoundView = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('Not found'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$View$page = function (model) {
+	var _p0 = model.route;
+	switch (_p0.ctor) {
+		case 'BookListRoute':
+			return _user$project$Book_List$view(model.visibleBooks);
+		case 'AddBookRoute':
+			return _user$project$Book_Add$view(model.inputBook);
+		default:
+			return _user$project$View$notFoundView;
+	}
+};
+var _user$project$View$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$body,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Navbar$navbar,
+			_1: {
+				ctor: '::',
+				_0: _user$project$TaskBar_TaskBar$taskbar(model.taskbar),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _user$project$View$page(model),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};

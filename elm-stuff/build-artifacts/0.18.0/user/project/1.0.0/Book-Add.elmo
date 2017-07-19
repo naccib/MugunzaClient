@@ -1,0 +1,143 @@
+var _user$project$Book_Add$closeButton = _elm_lang$html$Html_Attributes$href(_user$project$Routing$bookListPath);
+var _user$project$Book_Add$modalFooter = function (book) {
+	return A2(
+		_elm_lang$html$Html$footer,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('modal-card-foot'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$a,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('button is-success'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Criar Livro'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('button'),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Book_Add$closeButton,
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Cancelar'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Book_Add$modalContent = function (book) {
+	return A2(
+		_elm_lang$html$Html$section,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('modal-card-body'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _user$project$Book_Form$view,
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Book_Add$modalHead = function (book) {
+	return A2(
+		_elm_lang$html$Html$header,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('modal-card-head'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('modal-card-title'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Adicionar Livro'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('delete'),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Book_Add$closeButton,
+							_1: {ctor: '[]'}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Book_Add$view = function (book) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('modal is-active'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('modal-background'),
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('modal-card'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _user$project$Book_Add$modalHead(book),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Book_Add$modalContent(book),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Book_Add$modalFooter(book),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
