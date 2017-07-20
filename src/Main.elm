@@ -5,6 +5,8 @@ O goal de amanhã, quarta feira, é implementar Routing (https://www.elm-tutoria
 O goal para quinta feira é implementar uma página (e função) para adicionar livros.
 O goal para sexta feira é implementar um método de salvar livros no servidor.
 
+O goal de sábado é implementar uma maneira de carregar e salvar livros com .pdfs e imagens no servidor.
+
 Eu sei que vou precisar disso depois:
     Dá pra embedar PDFs de outros domínios no Chrome! É só ler aqui, Gui: https://stackoverflow.com/a/7044015
 -}

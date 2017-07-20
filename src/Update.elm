@@ -2,6 +2,7 @@ module Update exposing (..)
 
 import Msgs exposing (Msg(..), BookInputMsg(..))
 import Models exposing (Model, TaskBarOptions, Book)
+import Commands exposing (saveBookCmd, fetchBooks)
 import TaskBar.Search exposing (search)
 import RemoteData exposing (WebData)
 import Routing exposing (parseLocation)
@@ -31,6 +32,15 @@ update msg model =
 
         OnBookUpdate msg ->
             updateBook model msg
+
+        SaveBook book ->
+            (model, saveBookCmd book)
+
+        OnBookSave (Ok book) ->
+            (model, Cmd.none)
+
+        OnBookSave (Err error) ->
+            (model, Cmd.none)
 
 
 updateTaskbarQuery : TaskBarOptions -> String -> TaskBarOptions

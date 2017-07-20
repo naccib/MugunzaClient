@@ -2,6 +2,7 @@ module Msgs exposing (..)
 
 import RemoteData exposing (WebData)
 import Navigation exposing (Location)
+import Http
 import Models exposing (Book)
 
 type Msg
@@ -10,7 +11,9 @@ type Msg
     | OnLocationChange Location
     | UpdateQuery String
     | UpdateSearchBooks
+    | SaveBook Book
     | OnBookUpdate BookInputMsg
+    | OnBookSave (Result Http.Error Book)
 
 
 type BookInputMsg

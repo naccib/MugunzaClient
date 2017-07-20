@@ -5,12 +5,9 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Msgs exposing (Msg(..))
 import Models exposing (Book, TaskBarOptions)
+import Routing exposing (addBookPath)
 
 import TaskBar.Search exposing (search)
-
-{-
-TODO: Continue to work on a task bar...
--}
 
 taskbar : TaskBarOptions -> Html Msg
 taskbar options =
@@ -22,7 +19,7 @@ taskbar options =
             [
                 img [ src "../../assets/logo-normal.png", alt "Módulo Solidário" ] []
             ],
-            a [ class "nav-item" ]
+            a [ class "nav-item", href addBookPath ]
             [
                 text "Adicionar Livro"
             ]

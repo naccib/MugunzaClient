@@ -8,7 +8,7 @@ initialModel route =
     , visibleBooks = []
     , taskbar = TaskBarOptions "" [] Normal
     , route = route
-    , inputBook = Book "" "" "" [] 0
+    , inputBook = Book "" "" "" [] 0 ""
     }
 
 type alias Model =
@@ -25,7 +25,11 @@ type alias Book =
     , sinopsis  : String
     , tags      : List String
     , pageCount : Int
+    , id : BookId
     }
+
+type alias BookId =
+    String
 
 type ListOrientation =
     Normal

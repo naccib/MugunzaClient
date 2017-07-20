@@ -2,6 +2,7 @@ module Book.Add exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class, href)
+import Html.Events exposing (onClick)
 import Msgs exposing (Msg(..))
 import Models exposing (Book)
 
@@ -43,7 +44,7 @@ modalFooter : Book -> Html Msg
 modalFooter book =
     footer [ class "modal-card-foot" ]
     [
-        a [ class "button is-success" ] [ text "Criar Livro" ],
+        a [ class "button is-success", onClick (SaveBook book) ] [ text "Criar Livro" ],
         a [ class "button", closeButton ] [ text "Cancelar" ]
     ]
 

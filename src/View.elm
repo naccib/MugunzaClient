@@ -25,7 +25,7 @@ page : Model -> Html Msg
 page model =
     case model.route of
         Models.BookListRoute ->
-            Book.List.view model.visibleBooks
+            Book.List.view model.books model.visibleBooks
 
         Models.AddBookRoute ->
             Book.Add.view model.inputBook

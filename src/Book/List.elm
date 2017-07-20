@@ -8,16 +8,16 @@ import Random exposing (int, generate, Generator)
 
 import RemoteData exposing (WebData)
 
-view : List Book -> Html Msg
-view books =
+view : WebData (List Book) -> List Book -> Html Msg
+view response visibleBooks =
     div [ class "container" ]
     [
-        multilineGrid (books |> List.map (viewHorizontalBook >> wrapInColumn))
+        maybeBook response visibleBooks
     ]
 
 
-maybeBook : WebData (List Book) -> Html Msg
-maybeBook response =
+maybeBook : WebData (List Book) -> List Book -> Html Msg
+maybeBook response visibleBooks =
     case response of
         RemoteData.NotAsked ->
             text ""
@@ -26,7 +26,7 @@ maybeBook response =
             text "Loading..."
 
         RemoteData.Success books ->
-            multilineGrid (books |> List.map (viewHorizontalBook >> wrapInColumn))
+            multilineGrid (visibleBooks |> List.map (viewHorizontalBook >> wrapInColumn))
 
         RemoteData.Failure error ->
             text (toString error)
