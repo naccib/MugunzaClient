@@ -13,6 +13,7 @@ type Msg
     | UpdateSearchBooks
     | SaveBook Book
     | OnBookUpdate BookInputMsg
+    | OnBookClear
     | OnBookSave (Result Http.Error Book)
 
 

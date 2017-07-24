@@ -31,22 +31,23 @@ modalHead book =
         [
             text "Adicionar Livro"
         ],
-        a [ class "delete", closeButton ] []
+        a [ class "delete", closeButton, onClick OnBookClear ] []
     ]
 
 
 modalContent : Book -> Html Msg
 modalContent book =
-    section [ class "modal-card-body" ] [ Book.Form.view ]
+    section [ class "modal-card-body" ] [ Book.Form.view book ]
 
 
 modalFooter : Book -> Html Msg
 modalFooter book =
     footer [ class "modal-card-foot" ]
     [
-        a [ class "button is-success", onClick (SaveBook book) ] [ text "Criar Livro" ],
-        a [ class "button", closeButton ] [ text "Cancelar" ]
+        a [ class "button is-success", onClick (SaveBook book), closeButton ] [ text "Criar Livro" ],
+        a [ class "button", closeButton, onClick OnBookClear ] [ text "Cancelar" ]
     ]
+
 
 closeButton : Attribute Msg
 closeButton =

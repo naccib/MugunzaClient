@@ -1,11 +1,12 @@
 module Update exposing (..)
 
 import Msgs exposing (Msg(..), BookInputMsg(..))
-import Models exposing (Model, TaskBarOptions, Book)
+import Models exposing (Model, TaskBarOptions, Book, defaultBook)
 import Commands exposing (saveBookCmd, fetchBooks)
 import TaskBar.Search exposing (search)
 import RemoteData exposing (WebData)
 import Routing exposing (parseLocation)
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -33,11 +34,14 @@ update msg model =
         OnBookUpdate msg ->
             updateBook model msg
 
+        OnBookClear ->
+            { model | inputBook = defaultBook } ! []
+
         SaveBook book ->
             (model, saveBookCmd book)
 
         OnBookSave (Ok book) ->
-            (model, Cmd.none)
+            (model, fetchBooks)
 
         OnBookSave (Err error) ->
             (model, Cmd.none)
